@@ -1,5 +1,11 @@
-import { Dashboard } from "@/components/Dashboard";
+import { Dashboard } from "@/components/DashboardComponents/Dashboard";
+import SkeletonDashboard from "@/components/DashboardComponents/SkeletonDashboard";
+import { Suspense } from "react";
 
 export default function DashboardPage() {
-  return <Dashboard />;
+  return (
+    <Suspense fallback={<SkeletonDashboard />}>
+      <Dashboard />
+    </Suspense>
+  );
 }
