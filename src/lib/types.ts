@@ -18,7 +18,7 @@ export interface CompetitorElement {
 
 export interface Event {
   id: number;
-  type: PurpleType;
+  type: EventType;
   time: Date;
   match_clock?: string;
   match_time?: number;
@@ -51,7 +51,7 @@ export interface Player {
 
 export type PlayerType = "scorer" | "assist";
 
-export type PurpleType =
+export type EventType =
   | "match_ended"
   | "score_change"
   | "match_started"

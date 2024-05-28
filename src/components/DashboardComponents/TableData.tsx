@@ -10,18 +10,39 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import { Dispatch, SetStateAction } from "react";
 
-export default function TableData({ data }: { data: Match[] }) {
-  const sortedData = [...data].sort((a, b) =>
-    compareDesc(
-      parseISO(a.event.time.toString()),
-      parseISO(b.event.time.toString())
-    )
-  );
+export default function TableData({
+  data,
+  selectedMatch,
+  setSelectedMatch,
+}: {
+  data: Match[];
+  selectedMatch: number | null;
+  setSelectedMatch: Dispatch<SetStateAction<number | null>>;
+}) {
+  const uniqueMatches = new Set<number>();
+
+  const sortedUniqueData = data
+    .filter((match) => {
+      if (uniqueMatches.has(match.id)) {
+        return false;
+      }
+      uniqueMatches.add(match.id);
+      return true;
+    })
+    .sort((a, b) =>
+      compareDesc(
+        parseISO(a.event.time.toString()),
+        parseISO(b.event.time.toString())
+      )
+    );
+
   return (
     <Card>
       <CardHeader className="px-7">
         <CardTitle>Live Matches</CardTitle>
+        <span className="text-xs">Click to a match to see latest events.</span>
       </CardHeader>
       <CardContent>
         <Table>
@@ -39,8 +60,12 @@ export default function TableData({ data }: { data: Match[] }) {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {sortedData.map((match) => (
-              <TableRow key={match.id}>
+            {sortedUniqueData.map((match) => (
+              <TableRow
+                key={match.id}
+                onClick={() => setSelectedMatch(match.id)}
+                className="cursor-pointer"
+              >
                 <TableCell>
                   <div className="font-medium">
                     {format(parseISO(match.start_time.toString()), "HH:mm")}
