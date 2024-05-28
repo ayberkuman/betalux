@@ -1,18 +1,18 @@
 export interface Match {
   id: number;
-  homeCompetitorID: number;
-  awayCompetitorID: number;
+  homeCompetitorId: number;
+  awayCompetitorId: number;
   competitors: CompetitorElement[];
-  startTime: Date;
-  sportEventStatus: SportEventStatus;
+  start_time: Date;
+  sport_event_status: SportEventStatus;
   event: Event;
 }
 
 export interface CompetitorElement {
   id: number;
   name: string;
-  countryCode: string;
-  shortName: string;
+  country_code: string;
+  short_name: string;
   abbreviation: string;
 }
 
@@ -20,23 +20,23 @@ export interface Event {
   id: number;
   type: PurpleType;
   time: Date;
-  matchClock?: string;
-  matchTime?: number;
+  match_clock?: string;
+  match_time?: number;
   competitor?: CompetitorEnum;
   x?: number;
   y?: number;
   period?: number;
-  periodType?: PeriodTypeEnum;
+  period_type?: PeriodTypeEnum;
   updated?: boolean;
-  updatedTime?: Date;
-  homeScore?: number;
-  awayScore?: number;
+  updated_time?: Date;
+  home_score?: number;
+  away_score?: number;
   method?: string;
-  stoppageTime?: number;
-  stoppageTimeClock?: string;
+  stoppage_time?: number;
+  stoppage_time_clock?: string;
   description?: string;
   players?: Player[];
-  cardDescription?: string;
+  card_description?: string;
 }
 
 export type CompetitorEnum = "home" | "away";
@@ -63,19 +63,19 @@ export type PurpleType =
 export interface SportEventStatus {
   id: number;
   status: Status;
-  matchStatus: MatchStatus;
-  homeScore: number | null;
-  awayScore: number | null;
-  winnerID: number | null;
-  periodScores: PeriodScore[] | null;
+  match_status: MatchStatus;
+  home_score: number | null;
+  away_score: number | null;
+  winner_id: number | null;
+  period_scores: PeriodScore[] | null;
   clock: Clock | null;
   lastUpdated: Date;
 }
 
 export interface Clock {
   played: string;
-  stoppageTimePlayed?: string;
-  stoppageTimeAnnounced?: string;
+  stoppage_time_played?: string;
+  stoppage_time_announced?: string;
 }
 
 export type MatchStatus =
@@ -88,8 +88,8 @@ export type MatchStatus =
 export interface PeriodScore {
   type: PeriodTypeEnum;
   number?: number;
-  awayScore: number;
-  homeScore: number;
+  away_score: number;
+  home_score: number;
 }
 
 export type Status = "ended" | "live" | "not_started" | "closed";

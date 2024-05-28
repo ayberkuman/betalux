@@ -13,7 +13,7 @@ export async function Dashboard() {
   const data: Match[] = await res.json();
   return (
     <>
-      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid auto-rows-max max-h-screen overflow-y-scroll items-start gap-4 md:gap-8 lg:col-span-2">
         <Cards />
         <TableData data={data} />
       </div>
