@@ -30,8 +30,9 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Separator } from "../ui/separator";
+import { Match } from "@/lib/types";
 
-export default function CardSide() {
+export default function CardSide({ matchEvents }: { matchEvents: Match[] }) {
   return (
     <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
       <CardHeader className="flex flex-row items-start bg-muted/50">

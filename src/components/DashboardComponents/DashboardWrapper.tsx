@@ -5,6 +5,9 @@ export default async function DashboardWrapper() {
   const res = await fetch(
     "https://bx-api-dev.betalux.io/sport-data/lastEvents",
     {
+     /*  next: {
+        revalidate: 5,
+      }, */
       cache: "no-store",
     }
   );

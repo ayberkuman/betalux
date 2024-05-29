@@ -42,11 +42,11 @@ export default function Cards({ matchEvents }: { matchEvents: Match[] }) {
       </Card>
       <Card className="sm:col-span-2">
         <div className="p-3 flex items-center justify-between">
-          <CardTitle className="text-2xl basis-1/2 text-center">
+          <CardTitle className="text-xl basis-1/2 text-center">
             {latestEvent?.competitors[0].name}
           </CardTitle>
           {"-"}
-          <CardTitle className="text-2xl basis-1/2 text-center">
+          <CardTitle className="text-xl basis-1/2 text-center">
             {latestEvent?.competitors[1].name}
           </CardTitle>
         </div>

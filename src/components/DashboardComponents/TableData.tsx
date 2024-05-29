@@ -52,11 +52,13 @@ export default function TableData({
                 <div>Match Start</div>
                 <div className="text-xs">Match ID</div>
               </TableHead>
-              <TableHead className="hidden sm:table-cell">Home</TableHead>
+              <TableHead className="hidden sm:table-cell text-right">
+                Home
+              </TableHead>
               <TableHead className="hidden md:table-cell">Score</TableHead>
               <TableHead className="hidden sm:table-cell">Away</TableHead>
               <TableHead className="hidden sm:table-cell">Event ID</TableHead>
-              <TableHead className="">Event Time</TableHead>
+              <TableHead className="">Clock</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -74,12 +76,12 @@ export default function TableData({
                     {match.id}
                   </div>
                 </TableCell>
-                <TableCell className="hidden sm:table-cell">
+                <TableCell className="hidden sm:table-cell text-right">
                   {match.competitors[0].name}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {match.sport_event_status.home_score}-
-                  {match.sport_event_status.away_score}
+                  {match.sport_event_status.home_score ?? 0}-
+                  {match.sport_event_status.away_score ?? 0}
                 </TableCell>
                 <TableCell className="hidden sm:table-cell">
                   {match.competitors[1].name}
@@ -88,7 +90,9 @@ export default function TableData({
                   {match.event.id}
                 </TableCell>
                 <TableCell className="hidden sm:table-cell">
-                  {match.event.match_time}&quot;
+                  {match.sport_event_status.match_status === "ended"
+                    ? 'asd'
+                    : match.sport_event_status.clock?.played}
                 </TableCell>
               </TableRow>
             ))}

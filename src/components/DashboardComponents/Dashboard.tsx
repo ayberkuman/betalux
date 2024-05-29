@@ -1,13 +1,14 @@
 "use client";
+import { Match } from "@/lib/types";
 import { useState } from "react";
+import CardSide from "./CardSide";
 import Cards from "./Cards";
 import TableData from "./TableData";
-import CardSide from "./CardSide";
-import { Match } from "@/lib/types";
-import { parseISO } from "date-fns";
 
 export async function Dashboard({ data }: { data: Match[] }) {
-  const [selectedMatch, setSelectedMatch] = useState<number | null>(null);
+  const [selectedMatch, setSelectedMatch] = useState<number | null>(
+    data[data.length - 1].id
+  );
 
   const matchEvents =
     selectedMatch !== null
@@ -25,7 +26,7 @@ export async function Dashboard({ data }: { data: Match[] }) {
         />
       </div>
       <div>
-        <CardSide />
+        <CardSide matchEvents={matchEvents} />
       </div>
     </>
   );
