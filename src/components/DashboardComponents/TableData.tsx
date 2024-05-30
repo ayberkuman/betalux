@@ -39,7 +39,7 @@ export default function TableData({
     );
 
   return (
-    <Card>
+    <Card className="max-h-[80vh] overflow-y-auto">
       <CardHeader className="px-7">
         <CardTitle>Live Matches</CardTitle>
         <span className="text-xs">Click to a match to see latest events.</span>
@@ -57,7 +57,6 @@ export default function TableData({
               </TableHead>
               <TableHead className="hidden md:table-cell">Score</TableHead>
               <TableHead className="hidden sm:table-cell">Away</TableHead>
-              <TableHead className="hidden sm:table-cell">Event ID</TableHead>
               <TableHead className="">Clock</TableHead>
             </TableRow>
           </TableHeader>
@@ -86,12 +85,10 @@ export default function TableData({
                 <TableCell className="hidden sm:table-cell">
                   {match.competitors[1].name}
                 </TableCell>
-                <TableCell className="hidden sm:table-cell">
-                  {match.event.id}
-                </TableCell>
-                <TableCell className="hidden sm:table-cell">
-                  {match.sport_event_status.match_status === "ended"
-                    ? 'asd'
+                <TableCell className="table-cell">
+                  {match.sport_event_status.match_status === "ended" ||
+                  match.event.type === "match_ended"
+                    ? "Ended"
                     : match.sport_event_status.clock?.played}
                 </TableCell>
               </TableRow>

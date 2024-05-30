@@ -17,7 +17,7 @@ export async function Dashboard({ data }: { data: Match[] }) {
 
   return (
     <>
-      <div className="grid auto-rows-max max-h-screen overflow-y-scroll items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid auto-rows-max overflow-y-scroll items-start gap-4 md:gap-8 lg:col-span-2">
         <Cards matchEvents={matchEvents} />
         <TableData
           data={data}

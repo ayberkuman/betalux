@@ -1,16 +1,5 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import { Button } from "../ui/button";
-import { Progress } from "../ui/progress";
-import { Event, Match } from "@/lib/types";
-import { getEventType } from "@/lib/utils";
-import { Separator } from "../ui/separator";
+import { Match } from "@/lib/types";
+import { Card, CardHeader, CardTitle } from "../ui/card";
 
 export default function Cards({ matchEvents }: { matchEvents: Match[] }) {
   function getLatestEvent(events: Match | Match[]): Match {
@@ -41,23 +30,15 @@ export default function Cards({ matchEvents }: { matchEvents: Match[] }) {
         </CardFooter> */}
       </Card>
       <Card className="sm:col-span-2">
-        <div className="p-3 flex items-center justify-between">
+        <div className="p-3 flex h-full items-center justify-between">
           <CardTitle className="text-xl basis-1/2 text-center">
-            {latestEvent?.competitors[0].name}
+            {latestEvent?.competitors[0].abbreviation}
           </CardTitle>
           {"-"}
           <CardTitle className="text-xl basis-1/2 text-center">
-            {latestEvent?.competitors[1].name}
+            {latestEvent?.competitors[1].abbreviation}
           </CardTitle>
         </div>
-        <CardContent className="text-center">
-          <div className="text-xs text-muted-foreground">
-            {getEventType(latestEvent?.event.type)}
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Progress value={25} aria-label="25% increase" />
-        </CardFooter>
       </Card>
       <Card>
         <CardHeader className="pb-2 text-center">
