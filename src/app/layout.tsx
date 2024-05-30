@@ -1,8 +1,8 @@
+import Header from "@/components/Header";
+import SideNav from "@/components/SideNav";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SideNav from "@/components/SideNav";
-import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 

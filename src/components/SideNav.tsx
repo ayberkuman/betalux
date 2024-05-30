@@ -1,19 +1,11 @@
-import {
-  Package2,
-  Home,
-  ShoppingCart,
-  Package,
-  Users2,
-  LineChart,
-  Settings,
-} from "lucide-react";
+import { Home, Package2, Settings } from "lucide-react";
+import Link from "next/link";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
-import Link from "next/link";
 
 export default function SideNav() {
   return (
@@ -24,7 +16,7 @@ export default function SideNav() {
           className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
         >
           <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
-          <span className="sr-only">Acme Inc</span>
+          <span className="sr-only">Betalux</span>
         </Link>
         <TooltipProvider>
           <Tooltip>

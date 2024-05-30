@@ -10,9 +10,9 @@ import {
 import { Event, EventType, Match } from "@/lib/types";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
+import { format, parseISO } from "date-fns";
 
 export default function CardSide({ matchEvents }: { matchEvents: Match[] }) {
-  console.log(matchEvents);
   return (
     <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
       <CardHeader>
@@ -35,15 +35,25 @@ export default function CardSide({ matchEvents }: { matchEvents: Match[] }) {
       </CardHeader>
       <CardContent className="p-6 space-y-4 text-sm">
         {matchEvents.map((event) => (
-          <>
-            <EventComponent key={event.id} event={event.event} />
+          <div key={event.event.id}>
+            <EventComponent event={event.event} />
             <Separator />
-          </>
+          </div>
         ))}
       </CardContent>
       <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
         <div className="text-xs text-muted-foreground">
-          Updated <time dateTime="2023-11-23">November 23, 2023</time>
+          Last Updated{" "}
+          <time>
+            {format(
+              parseISO(
+                matchEvents[
+                  matchEvents.length - 1
+                ].sport_event_status.lastUpdated.toString()
+              ),
+              "HH:mm"
+            )}
+          </time>
         </div>
       </CardFooter>
     </Card>

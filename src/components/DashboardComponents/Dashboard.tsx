@@ -5,7 +5,7 @@ import CardSide from "./CardSide";
 import Cards from "./Cards";
 import TableData from "./TableData";
 
-export async function Dashboard({ data }: { data: Match[] }) {
+export function Dashboard({ data }: { data: Match[] }) {
   const [selectedMatch, setSelectedMatch] = useState<number | null>(
     data[data.length - 1].id
   );
